@@ -5,9 +5,9 @@ package Models;
 public class Pessoa {
     
      
-	private String cpf;
-	private String nome;
-	private String email;
+	protected String cpf;
+	protected String nome;
+	protected String email;
 	
        
         public Pessoa( String cpf, String nome, String email) {
@@ -48,8 +48,7 @@ public class Pessoa {
 
     @Override
     public String toString() {
-		return "Cliente [cpf=" + cpf + ", nome=" + nome + ", email=" + email + ", 
-				"]";
+		return " Nome='"+nome+"', CPF='"+cpf+"', Email='"+email+"'";
 	}
 
 }

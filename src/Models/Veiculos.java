@@ -22,8 +22,7 @@ public class Veiculos {
        
         public Veiculos ( int id_ve, String marca, String modelo, String cor, String placa, 
                 String cambio, String direcao, double potencia, boolean vidroseletricos, boolean arcondicionado, double valor, String anofabricacao,String dataaqusicao){
-            
-  
+       
                this.id_ve = id_ve;
 	       this.marca = marca;
 	       this.modelo = modelo;
@@ -37,7 +36,6 @@ public class Veiculos {
                this.valor = valor;
 	       this.anofabricacao = anofabricacao;
                this.dataaqusicao = dataaqusicao;
-       
 	}
 
     public int getId_ve() {

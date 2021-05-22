@@ -1,7 +1,5 @@
 package Models;
-/**
- * @author Yasmim
- */
+
 public class Cliente extends Pessoa {
     
         private int id_cl;
@@ -16,9 +14,9 @@ public class Cliente extends Pessoa {
    
 	
 
-	public Cliente(int id_cl, String cnh, String dataNascimento, String telefone, 
+	public Cliente(int id_cl, String nome, String cpf, String email, String cnh, String dataNascimento, String telefone, 
             String endCidade, String endRua, int endNumero, int endCEP, String endBairro) {
-		
+		super(cpf, nome, email);
 		this.id_cl = id_cl;
 		this.cnh = cnh;
 		this.dataNascimento = dataNascimento;
@@ -99,18 +97,9 @@ public class Cliente extends Pessoa {
              this.endCEP = endCEP;
         }
 
-   
         
-        
-         
-        
-        
-     
-
-	@Override
 	public String toString() {
-		return "Cliente [id_cl=" + id_cl + ", cpf=" + cpf + ", nome=" + nome + ", email=" + email + ", senha="
-				+ senha + "]";
+		return "Cliente id_cl=" + id_cl + ", '"+ super.toString() +"', Número de CNH = '"+cnh+"', ";
 	}
 }
 

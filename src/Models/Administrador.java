@@ -1,55 +1,36 @@
 package Models;
-/**
- 
- * @author Yasmim
- */
-public class Administrador extends Pessoa{
 
-    
+public class Administrador extends Pessoa{
         private int id;
 	private String senha;
 	
 	
-	public Administrador(int id,  String senha) {
-		this.id = id;
-		this.senha = senha;
-	
+	public Administrador(int id, String nome, String cpf, String email, String senha){
+            super(cpf, nome, email);
+            this.id = id;
+            this.senha = senha;
 	}
 	
-	public Administrador( String senha) {
-		this.senha = senha;
-	}
-
-	public Administrador(int id) {
-		this.id = id;
-	}
 	
 	public int getId_admin() {
 		return id;
 	}
 
-	public void setId_admin(int id) {
+	public void setId_admin(int id){
 		this.id = id;
+        }
 
 
-	public String getSenha() {
+	public String getSenha(){
 		return senha;
 	}
 
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
 	
 	@Override
 	public String toString() {
-		return "Administrador [id_adm=" + id+ ", cpf=" + cpf + ", senha=" + senha + ", nome=" + nome
-				+ ", email=" + email + "]";
+		return "Administrador: Id="+id+", '"+super.toString()+"', Senha='"+senha+"'";
 	}
-}
-
-    
-}
-
-    
 }

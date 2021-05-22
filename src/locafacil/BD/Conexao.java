@@ -17,7 +17,7 @@ public class Conexao {
     public Conexao(){
         url = "jdbc:postgresql://localhost:5432/postgres";
         usuario = "postgres";
-        senha = "12345";
+        senha = "9466";
         
         try {
             Class.forName("org.postgresql.Driver");
@@ -30,7 +30,7 @@ public class Conexao {
     }
     
     
-    //Método genérico de inserção. Ele recebe a string com comando específico para ca inserção. ele apenas executa o comando
+    //Método genérico de execução. Ele recebe a string com comando específico e apenas executa o comando
     public void execute(String sql){
         try {
             java.sql.Statement stm = con.createStatement();
@@ -40,11 +40,7 @@ public class Conexao {
         }
     }
     
-    
-   
-    
-    
-    
+  
     //Método que cria todas as tabelas. Ele é chamado junto com a conexão. caso não exista as tabelas, cria, caso não, nada acontece
     public void criaTabalas(){
         try {
