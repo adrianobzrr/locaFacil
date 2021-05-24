@@ -22,7 +22,7 @@ public class Conexao {
         try {
             Class.forName("org.postgresql.Driver");
             con = DriverManager.getConnection(url, usuario, senha);
-            System.out.println("Conexão realizada com sucesso!");
+            //System.out.println("Conexão realizada com sucesso!");
             criaTabalas();
         } catch (Exception e) {
             e.printStackTrace();
@@ -40,6 +40,17 @@ public class Conexao {
         }
     }
     
+    public ResultSet executaBusca(String sql){
+        try {
+            java.sql.Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            con.close();
+            return rs;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
   
     //Método que cria todas as tabelas. Ele é chamado junto com a conexão. caso não exista as tabelas, cria, caso não, nada acontece
     public void criaTabalas(){
@@ -57,7 +68,7 @@ public class Conexao {
         try {
             String sql = "create table cliente(id_cl serial,nome_cl character varying,"
                     + "cpf_cl character varying not null unique,email_cl character varying unique,"
-                    + "numeroCNH_cl character varying,nascimento_cl character varying not null,"
+                    + "numeroCNH_cl character varying,nascimento_cl date,"
                     + "telefone_cl character varying,endCidade_cl character varying,endRua_cl character varying,"
                     + "endNumero_cl int,endCEP_cl int,endBairro_cl character varying,primary key (id_cl))";	
             java.sql.Statement stm = con.createStatement();
@@ -70,7 +81,7 @@ public class Conexao {
             String sql = "create table veiculo(id_ve serial,marca_ve character varying,"
                     + "modelo_ve character varying,cor_ve character varying,placa_ve character varying not null unique,"
                     + "cambio_ve character varying,direcao_ve character varying,potencia_ve float,vidrosEletricos_ve boolean,"
-                    + "arCondicionado_ve boolean,anoFabricacao_ve character varying,valor_ve float,dataAquisicao character varying,"
+                    + "arCondicionado_ve boolean,anoFabricacao_ve character varying,valor_ve float,dataAquisicao date,"
                     + "primary key (id_ve))";	
             java.sql.Statement stm = con.createStatement();
             stm.executeUpdate(sql);
@@ -79,7 +90,7 @@ public class Conexao {
             //e.printStackTrace();
         }
         try {
-            String sql = "create table aluguel(id_alu serial,dataInicio_alu character varying,dataFim_alu character varying,"
+            String sql = "create table aluguel(id_alu serial,dataInicio_alu date,dataFim_alu date,"
                     + "valor_alu real,id_cl int,id_ve int,primary key (id_alu),foreign key (id_cl) references cliente,"
                     + "foreign key (id_ve) references veiculo)";	
             java.sql.Statement stm = con.createStatement();

@@ -1,12 +1,5 @@
-
 package locafacil.BD;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-/**
- *
- * @author Yasmim
- */
+
 public class Delete{
        
        public void deleteAdm(int id_adm){

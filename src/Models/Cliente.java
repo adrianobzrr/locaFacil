@@ -99,7 +99,9 @@ public class Cliente extends Pessoa {
 
         
 	public String toString() {
-		return "Cliente id_cl=" + id_cl + ", '"+ super.toString() +"', Número de CNH = '"+cnh+"', ";
+		return "Cliente id_cl: " + id_cl + ", "+ super.toString() +", Número de CNH: "+cnh+", Data de Nascimento: "
+                        +dataNascimento+", Telefone: "+telefone+", Rua: "+endRua+", Num: "+endNumero+", Cidade: "+endCidade+", "
+                        +"Bairro: "+endBairro+", CEP: "+endCEP;
 	}
 }
 

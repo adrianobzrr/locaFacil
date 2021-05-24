@@ -11,7 +11,6 @@ public class Administrador extends Pessoa{
             this.senha = senha;
 	}
 	
-	
 	public int getId_admin() {
 		return id;
 	}
@@ -31,6 +30,6 @@ public class Administrador extends Pessoa{
 	
 	@Override
 	public String toString() {
-		return "Administrador: Id="+id+", '"+super.toString()+"', Senha='"+senha+"'";
+		return "Administrador: Id: "+id+", "+super.toString()+", Senha: "+senha+"";
 	}
 }
