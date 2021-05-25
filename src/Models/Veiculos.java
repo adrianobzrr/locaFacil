@@ -17,13 +17,31 @@ public class Veiculos {
         private boolean vidroseletricos;
         private boolean arcondicionado;
         private double valor;
-	private String anofabricacao;
+	private int anofabricacao;
         private String dataaqusicao;
        
         public Veiculos ( int id_ve, String marca, String modelo, String cor, String placa, 
-                String cambio, String direcao, double potencia, boolean vidroseletricos, boolean arcondicionado, double valor, String anofabricacao,String dataaqusicao){
+                String cambio, String direcao, double potencia, boolean vidroseletricos, boolean arcondicionado, 
+                double valor, int anofabricacao,String dataaqusicao){
        
                this.id_ve = id_ve;
+	       this.marca = marca;
+	       this.modelo = modelo;
+               this.cor = cor;
+	       this.placa = placa;
+               this.cambio = cambio;
+	       this.direcao = direcao;
+               this.potencia = potencia;
+               this.vidroseletricos = vidroseletricos;
+               this.arcondicionado = arcondicionado;
+               this.valor = valor;
+	       this.anofabricacao = anofabricacao;
+               this.dataaqusicao = dataaqusicao;
+	}
+        
+        public Veiculos (String marca, String modelo, String cor, String placa, 
+                String cambio, String direcao, double potencia, boolean vidroseletricos, boolean arcondicionado,
+                double valor, int anofabricacao,String dataaqusicao){
 	       this.marca = marca;
 	       this.modelo = modelo;
                this.cor = cor;
@@ -105,9 +123,17 @@ public class Veiculos {
     public void setVidroseletricos(boolean vidroseletricos) {
         this.vidroseletricos = vidroseletricos;
     }
+    
+    public boolean getVidroseletricos() {
+        return this.vidroseletricos;
+    }
 
     public void setArcondicionado(boolean arcondicionado) {
         this.arcondicionado = arcondicionado;
+    }
+    
+    public boolean getArcondicionado() {
+        return this.arcondicionado;
     }
 
     public double getValor() {
@@ -118,11 +144,11 @@ public class Veiculos {
         this.valor = valor;
     }
 
-    public String getAnofabricacao() {
+    public int getAnofabricacao() {
         return anofabricacao;
     }
 
-    public void setAnofabricacao(String anofabricacao) {
+    public void setAnofabricacao(int anofabricacao) {
         this.anofabricacao = anofabricacao;
     }
 

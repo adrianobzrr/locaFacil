@@ -10,6 +10,11 @@ public class Administrador extends Pessoa{
             this.id = id;
             this.senha = senha;
 	}
+        
+        public Administrador(String nome, String cpf, String email, String senha){
+            super(cpf, nome, email);
+            this.senha = senha;
+	}
 	
 	public int getId_admin() {
 		return id;

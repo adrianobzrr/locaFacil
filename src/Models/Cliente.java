@@ -28,6 +28,19 @@ public class Cliente extends Pessoa {
                 this.endBairro= endBairro;
 			
 	}
+        
+        public Cliente(String nome, String cpf, String email, String cnh, String dataNascimento, String telefone, 
+            String endCidade, String endRua, int endNumero, int endCEP, String endBairro) {
+		super(cpf, nome, email);
+		this.cnh = cnh;
+		this.dataNascimento = dataNascimento;
+		this.telefone = telefone;
+                this.endCidade = endCidade;
+		this.endRua= endRua;
+		this.endNumero= endNumero;
+                this.endCEP= endCEP;
+                this.endBairro= endBairro;	
+	}
 
         public int getId_cl() {
             return id_cl;
@@ -96,10 +109,18 @@ public class Cliente extends Pessoa {
         public void setEndCEP(int endCEP) {
              this.endCEP = endCEP;
         }
+        
+        public String getEndBairro() {
+            return endBairro;
+        }
+
+        public void setEndBairro(String endBString) {
+             this.endBairro = endBairro;
+        }
 
         
 	public String toString() {
-		return "Cliente id_cl: " + id_cl + ", "+ super.toString() +", Número de CNH: "+cnh+", Data de Nascimento: "
+		return "Cliente ID: " + id_cl + ", "+ super.toString() +", Número de CNH: "+cnh+", Data de Nascimento: "
                         +dataNascimento+", Telefone: "+telefone+", Rua: "+endRua+", Num: "+endNumero+", Cidade: "+endCidade+", "
                         +"Bairro: "+endBairro+", CEP: "+endCEP;
 	}

@@ -22,7 +22,6 @@ public class Conexao {
         try {
             Class.forName("org.postgresql.Driver");
             con = DriverManager.getConnection(url, usuario, senha);
-            //System.out.println("Conexão realizada com sucesso!");
             criaTabalas();
         } catch (Exception e) {
             e.printStackTrace();
@@ -44,7 +43,6 @@ public class Conexao {
         try {
             java.sql.Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
-            con.close();
             return rs;
         } catch (Exception e) {
             e.printStackTrace();
@@ -81,7 +79,7 @@ public class Conexao {
             String sql = "create table veiculo(id_ve serial,marca_ve character varying,"
                     + "modelo_ve character varying,cor_ve character varying,placa_ve character varying not null unique,"
                     + "cambio_ve character varying,direcao_ve character varying,potencia_ve float,vidrosEletricos_ve boolean,"
-                    + "arCondicionado_ve boolean,anoFabricacao_ve character varying,valor_ve float,dataAquisicao date,"
+                    + "arCondicionado_ve boolean,anoFabricacao_ve int,valor_ve float,dataAquisicao_ve date,"
                     + "primary key (id_ve))";	
             java.sql.Statement stm = con.createStatement();
             stm.executeUpdate(sql);
@@ -100,6 +98,47 @@ public class Conexao {
             //e.printStackTrace();
         }
         
+        try {
+            String sql = "create table gerenciacliente(\n" +
+"	id_adm int,\n" +
+"	id_cl int,\n" +
+"	acao character varying,\n" +
+"	foreign key (id_cl) references cliente,\n" +
+"	foreign key (id_adm) references administrador)";	
+            java.sql.Statement stm = con.createStatement();
+            stm.executeUpdate(sql);
+            System.out.println("Tabela de gerenciaCliente criada com sucesso!");
+        } catch (Exception e) {
+            //e.printStackTrace();
+        }
+        
+        try {
+            String sql = "create table gerenciaveiculo(\n" +
+"	id_adm int,\n" +
+"	id_ve  int,\n" +
+"	acao character varying,\n" +
+"	foreign key (id_adm) references administrador,\n" +
+"	foreign key (id_ve) references veiculo)";	
+            java.sql.Statement stm = con.createStatement();
+            stm.executeUpdate(sql);
+            System.out.println("Tabela de gerenciaVeiculo criada com sucesso!");
+        } catch (Exception e) {
+            //e.printStackTrace();
+        }
+        
+        try {
+            String sql = "create table gerencialuguel(\n" +
+"	id_adm int,\n" +
+"	id_alu  int,\n" +
+"	acao character varying,\n" +
+"	foreign key (id_adm) references administrador,\n" +
+"	foreign key (id_alu) references aluguel)";	
+            java.sql.Statement stm = con.createStatement();
+            stm.executeUpdate(sql);
+            System.out.println("Tabela de gerenciaAluguel criada com sucesso!");
+        } catch (Exception e) {
+            //e.printStackTrace();
+        }
     }
 
 
