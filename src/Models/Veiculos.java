@@ -1,9 +1,5 @@
 package Models;
 
-/**
- *
- * @author Yasmim
- */
 public class Veiculos {
     
 	private int id_ve;
@@ -20,7 +16,7 @@ public class Veiculos {
 	private int anofabricacao;
         private String dataaqusicao;
        
-        public Veiculos ( int id_ve, String marca, String modelo, String cor, String placa, 
+        public Veiculos (int id_ve, String marca, String modelo, String cor, String placa, 
                 String cambio, String direcao, double potencia, boolean vidroseletricos, boolean arcondicionado, 
                 double valor, int anofabricacao,String dataaqusicao){
        

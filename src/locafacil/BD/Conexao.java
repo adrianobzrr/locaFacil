@@ -49,6 +49,7 @@ public class Conexao {
             return null;
         }
     }
+    
   
     //Método que cria todas as tabelas. Ele é chamado junto com a conexão. caso não exista as tabelas, cria, caso não, nada acontece
     public void criaTabalas(){

@@ -6,6 +6,7 @@ import Models.Veiculos;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.sql.ResultSet;
 
 public class Insert {
     
@@ -41,6 +42,7 @@ public class Insert {
         //SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
         //Date dataFormatada = formato.parse(cl.getDataNascimento());
         //System.out.println(dataFormatada);
+        int id_ve =0 ;
         String sql = "INSERT INTO veiculo (marca_ve,modelo_ve,cor_ve,placa_ve,cambio_ve,direcao_ve,potencia_ve,"
                 + "vidroseletricos_ve,arcondicionado_ve,anofabricacao_ve,valor_ve,dataaquisicao_ve) VALUES('"
                 +ve.getMarca()+ "','"
@@ -57,8 +59,16 @@ public class Insert {
                 +ve.getDataaqusicao()+ "')";
         Conexao con = new Conexao();
         con.execute(sql);
-        
-        //sql = "INSERT INTO gerenciaveiculo (id_adm,id_ve,acao) VALUES("+id_adm+")";
+        ResultSet rs = con.executaBusca("Select * from veiculo");
+        try {
+                while(rs.next()){
+                    id_ve = rs.getInt("id_ve");
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        sql = "INSERT INTO gerenciaveiculo (id_adm,id_ve,acao) VALUES("+id_adm+","+id_ve+",'inserção')";
+        con.execute(sql);
     }
     
     
