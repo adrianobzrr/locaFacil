@@ -10,27 +10,28 @@ public class Aluguel {
 	private String dataInicio;
         private String dataFim;
         private double valor;
-        private double potencia;
         private int id_ve;
         private int id_cl;
    
 
     
-       public Aluguel(int id_alu, String dataInicio, String dataFim, double valor, 
-            double potencia, int id_cl,int id_ve){
+       public Aluguel(int id_alu, String dataInicio, String dataFim, double valor, int id_cl,int id_ve){
            
-           
-        
                this.id_alu = id_alu;
 	       this.dataInicio = dataInicio;
 	       this.dataFim = dataFim;
                this.valor = valor;
-	       this.potencia = potencia;
                this. id_cl =  id_cl;
 	       this.id_ve = id_ve;
-              
-               
-          
+       }
+       
+       public Aluguel(String dataInicio, String dataFim, double valor, int id_cl,int id_ve){
+           
+	       this.dataInicio = dataInicio;
+	       this.dataFim = dataFim;
+               this.valor = valor;
+               this. id_cl =  id_cl;
+	       this.id_ve = id_ve;
        }
 
     public int getId_alu() {
@@ -55,14 +56,6 @@ public class Aluguel {
 
     public void setDataFim(String dataFim) {
         this.dataFim = dataFim;
-    }
-
-    public double getPotencia() {
-        return potencia;
-    }
-
-    public void setPotencia(double potencia) {
-        this.potencia = potencia;
     }
 
     public double getValor() {
