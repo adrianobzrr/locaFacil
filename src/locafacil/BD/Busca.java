@@ -1,6 +1,7 @@
 
 package locafacil.BD;
 import Models.Administrador;
+import Models.Aluguel;
 import Models.Cliente;
 import Models.Veiculos;
 import java.sql.ResultSet;
@@ -40,6 +41,43 @@ public class Busca {
                 nascimento = null, telefone = null, endCidade = null, endRua = null, endBairro = null;
         try {
             String sql = "Select * from cliente where nome_cl like '"+nome+"';";
+            Conexao con = new Conexao();
+            ResultSet rs = con.executaBusca(sql);
+            
+            try {
+                while(rs.next()){
+                    id = rs.getInt("id_cl");
+                    nome_cliente = rs.getString("nome_cl");
+                    cpf = rs.getString("cpf_cl");
+                    email = rs.getString("email_cl");
+                    numeroCNH = rs.getString("numerocnh_cl");
+                    nascimento = rs.getString("nascimento_cl");
+                    telefone = rs.getString("telefone_cl");
+                    endCidade = rs.getString("endcidade_cl");
+                    endRua = rs.getString("endrua_cl");
+                    endNumero = rs.getInt("endnumero_cl");
+                    endCEP = rs.getInt("endcep_cl");
+                    endBairro = rs.getString("endbairro_cl");
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            Cliente cl = new Cliente(id, nome_cliente, cpf, email, numeroCNH, nascimento, telefone, 
+            endCidade, endRua, endNumero, endCEP, endBairro);
+            return cl;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    
+    public Cliente buscaClienteId(String id_cl){
+        int id = 0, endNumero = 0, endCEP = 0;
+        String nome_cliente = null, cpf = null, email = null, numeroCNH = null, 
+                nascimento = null, telefone = null, endCidade = null, endRua = null, endBairro = null;
+        try {
+            String sql = "Select * from cliente where id_cl like '"+id_cl+"';";
             Conexao con = new Conexao();
             ResultSet rs = con.executaBusca(sql);
             
@@ -110,6 +148,110 @@ public class Busca {
             return null;
         }
     }
-    
+      public Veiculos buscaVeiculoModelo(String modelo_ve){ 
+   
+        int id =0, anofabricacao = 0;
+	String marca = null,modelo = null, cor = null, placa = null, cambio = null , 
+                direcao = null, dataaqusicao = null;
+        float potencia = 0;
+        boolean vidroseletricos = false, arcondicionado = false;
+        double valor = 0;
+        try {
+            String sql = "Select * from veiculo where modelo_ve= "+modelo_ve+";";
+            Conexao con = new Conexao();
+            ResultSet rs = con.executaBusca(sql);
+            
+            try {
+                while(rs.next()){
+                    id = rs.getInt("id_ve");
+                    marca = rs.getString("marca_ve");
+                    modelo = rs.getString("modelo_ve");
+                    cor = rs.getString("cor_ve");
+                    placa = rs.getString("placa_ve");
+                    cambio = rs.getString("cambio_ve");
+                    direcao = rs.getString("direcao_ve");
+                    potencia = rs.getFloat("potencia_ve");
+                    vidroseletricos = rs.getBoolean("vidroseletricos_ve");
+                    arcondicionado = rs.getBoolean("arcondicionado_ve");
+                    anofabricacao = rs.getInt("anofabricacao_ve");
+                    valor = rs.getFloat("valor_ve");
+                    dataaqusicao = rs.getString("dataaqusicao_ve");
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            Veiculos ve = new Veiculos(id, marca, modelo, cor, placa, 
+                cambio, direcao, potencia, vidroseletricos, arcondicionado, 
+                valor, anofabricacao, dataaqusicao);
+            return ve;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+     }
+      
+      
+      public Aluguel buscaAluguelId(int id_alu){
+        int id = 0;
+        String dataInicio = null;
+        String dataFim = null;
+        double valor = 0, potencia = 0;
+
+        try {
+            String sql = "Select * from aluguel where id_alu= "+id_alu+";";
+            Conexao con = new Conexao();
+            ResultSet rs = con.executaBusca(sql);
+            
+            try {
+                while(rs.next()){
+                    id = rs.getInt("id_alu");
+                    dataInicio = rs.getString("dataInicio_alu");
+                    dataFim = rs.getString("dataFim_alu");
+                    valor = rs.getFloat("valor_alu");
+                  
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            Aluguel alu = new Aluguel( id, dataInicio, dataFim, valor, 
+            potencia);
+            return alu;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+     }
+      
+      
+      public Aluguel buscaAluguelIdCliente(int id_cl){
+        int id = 0;
+        String dataInicio = null;
+        String dataFim = null;
+        double valor = 0, potencia = 0;
+
+        try {
+            String sql = "Select * from aluguel where id_cl= "+id_cl+";";
+            Conexao con = new Conexao();
+            ResultSet rs = con.executaBusca(sql);
+            
+            try {
+                while(rs.next()){
+                    id = rs.getInt("id_cl");
+                    dataInicio = rs.getString("dataInicio_alu");
+                    dataFim = rs.getString("dataFim_alu");
+                    valor = rs.getFloat("valor_alu");
+                  
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            Aluguel alu = new Aluguel( id, dataInicio, dataFim, valor, 
+            potencia);
+            return alu;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+     }
     
 }

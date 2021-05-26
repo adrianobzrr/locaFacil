@@ -1,5 +1,6 @@
 
 import Models.Administrador;
+import Models.Aluguel;
 import Models.Cliente;
 import Models.Veiculos;
 import java.text.ParseException;
@@ -29,6 +30,8 @@ public class LocaFacil {
                 45000.00, 2019, "12/8/2020");
         Cliente cl = new Cliente("Paulo Nobre", "01779563485", "pnobre@gmail.com", "665654654", "09/01/1994", "94663401", "São Miguel", 
               "Rua Eneas Bobo", 51, 59925000, "Maria Manuela");
+        Aluguel alu = new Aluguel( 1,"13/09/2020", "30/10/2020", 3000.00, 
+                  100);
         //ins.insertAdm(adm);
         //ins.insertCliente(cl);
         //ins.insertVeiculo(ve, 1);

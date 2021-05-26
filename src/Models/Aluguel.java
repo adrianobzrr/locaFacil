@@ -34,6 +34,10 @@ public class Aluguel {
 	       this.id_ve = id_ve;
        }
 
+    public Aluguel(int id_alu, String dataInicio, String dataFim, double valor, double potencia) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getId_alu() {
         return id_alu;
     }

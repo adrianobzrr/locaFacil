@@ -57,6 +57,9 @@ public class Edit {
          con.execute(sql);
        }
       
+      
+      
+      
          public void editAluguel(int id_alu, String dataInicio, String dataFim, double valor, 
             double potencia, int id_cl,int id_ve){
          
