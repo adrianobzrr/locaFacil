@@ -1,6 +1,7 @@
 package locafacil.BD;
 
 import Models.Administrador;
+import Models.Aluguel;
 import Models.Cliente;
 import Models.Veiculos;
 import java.text.ParseException;
@@ -17,7 +18,8 @@ public class Insert {
         con.execute(sql);
     }
     
-    public void insertCliente(Cliente cl) throws ParseException{
+    public void insertCliente(Cliente cl, int id_adm) throws ParseException{
+        int id_cl=0;
         //SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
         //Date dataFormatada = formato.parse(cl.getDataNascimento());
         //System.out.println(dataFormatada);
@@ -35,6 +37,16 @@ public class Insert {
                 +cl.getEndCEP()+ ",'"
                 +cl.getEndBairro()+ "')";
         Conexao con = new Conexao();
+        con.execute(sql);
+        ResultSet rs = con.executaBusca("Select * from cliente");
+        try {
+                while(rs.next()){
+                    id_cl = rs.getInt("id_cl");
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        sql = "INSERT INTO gerenciacliente (id_adm,id_cl,acao) VALUES("+id_adm+","+id_cl+",'inserção')";
         con.execute(sql);
     }
     
@@ -71,5 +83,25 @@ public class Insert {
         con.execute(sql);
     }
     
+    public void insertAluguel(Aluguel alu, int id_adm) throws ParseException{
+        //SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
+        //Date dataFormatada = formato.parse(cl.getDataNascimento());
+        //System.out.println(dataFormatada);
+        int id_alu =0 ;
+        String sql = "INSERT INTO aluguel (datainicio_alu,datafim_alu,valor_alu,id_cl,id_ve) VALUES ('"
+                + alu.getDataInicio()+"','"+alu.getDataFim()+"',"+alu.getValor()+","+alu.getId_cl()+","+alu.getId_ve()+");";
+        Conexao con = new Conexao();
+        con.execute(sql);
+        ResultSet rs = con.executaBusca("Select * from veiculo");
+        try {
+                while(rs.next()){
+                    id_alu = rs.getInt("id_alu");
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        sql = "INSERT INTO gerencialuguel (id_adm,id_alu,acao) VALUES("+id_adm+","+id_alu+",'inserção')";
+        con.execute(sql);
+    }
     
 }

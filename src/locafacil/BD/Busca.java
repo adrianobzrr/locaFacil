@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 
 public class Busca {
     
-    public Administrador buscaAdmEmail(String email){
+    public Administrador buscaAdmEmailEmail(String email){
         int id = 0;
         String nome = null, cpf = null, email_adm = null, senha = null;
         try {

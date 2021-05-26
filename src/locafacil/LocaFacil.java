@@ -10,13 +10,16 @@ import locafacil.BD.Insert;
 import locafacil.BD.Delete;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import locafacil.BD.CreateTable;
 
 
 public class LocaFacil {
 
     public static void main(String[] args) throws ParseException, SQLException {
-        Administrador adm = new Administrador("Paulo Cesar", "00000000000", "paulo@gmail.com", "16515dfadf");
         Conexao con = new Conexao();
+        CreateTable criaTabelas = new CreateTable();
+        criaTabelas.criaTabalas();
+        Administrador adm = new Administrador("Paulo Cesar", "00000000000", "paulo@gmail.com", "16515dfadf");
         Insert ins = new Insert();
         Edit edt = new Edit();
         Delete del = new Delete();
@@ -28,7 +31,7 @@ public class LocaFacil {
               "Rua Eneas Bobo", 51, 59925000, "Maria Manuela");
         //ins.insertAdm(adm);
         //ins.insertCliente(cl);
-        ins.insertVeiculo(ve, 1);
+        //ins.insertVeiculo(ve, 1);
         //edt.editAdm("Jose Ricardo Silva","1233456789", "joser@gmail", "53tgs342ds", 1);
         //del.deleteAdm(1);
         //adm = busca.buscaAdmEmail("ricardinhodelas@gmail.com");
