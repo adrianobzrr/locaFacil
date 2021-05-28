@@ -28,7 +28,7 @@ public class Conexao {
     }
     
     
-    //Método genérico de execução. Ele recebe a string com comando específico e apenas executa o comando
+    //Método genérico de execução. Ele recebe a string com comando específico e executa o comando
     public void execute(String sql){
         try {
             java.sql.Statement stm = con.createStatement();
@@ -38,6 +38,7 @@ public class Conexao {
         }
     }
     
+    //Método genérico de busca. Recebe um string de busca, executa e retorna a busca
     public ResultSet executaBusca(String sql){
         try {
             java.sql.Statement stm = con.createStatement();

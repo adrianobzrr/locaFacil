@@ -16,7 +16,6 @@ public class Aluguel {
 
     
        public Aluguel(int id_alu, String dataInicio, String dataFim, double valor, int id_cl,int id_ve){
-           
                this.id_alu = id_alu;
 	       this.dataInicio = dataInicio;
 	       this.dataFim = dataFim;
@@ -26,17 +25,12 @@ public class Aluguel {
        }
        
        public Aluguel(String dataInicio, String dataFim, double valor, int id_cl,int id_ve){
-           
 	       this.dataInicio = dataInicio;
 	       this.dataFim = dataFim;
                this.valor = valor;
                this. id_cl =  id_cl;
 	       this.id_ve = id_ve;
        }
-
-    public Aluguel(int id_alu, String dataInicio, String dataFim, double valor, double potencia) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     public int getId_alu() {
         return id_alu;

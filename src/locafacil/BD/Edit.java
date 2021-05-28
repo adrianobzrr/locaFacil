@@ -23,7 +23,7 @@ public class Edit {
        
        
        public void editCliente(int id_cl, String nome, String cpf, String email, String cnh, String dataNascimento, String telefone, 
-            String endCidade, String endRua, int endNumero, int endCEP, String endBairro){
+            String endCidade, String endRua, int endNumero, int endCEP, String endBairro, int id_adm){
          
          String sql = "UPDATE cliente SET"
                 + " nome_cl ='"+nome+"',cpf_cl = '"+cpf+
@@ -33,17 +33,20 @@ public class Edit {
                 "',endnumero_cl = "+endNumero+",endcep_cl = "+endCEP+
                 ", endbairro_cl = '"+endBairro+"'WHERE id_cl = "+id_cl+";";
         
-         System.out.println(sql);
-         Conexao con = new Conexao();
-         con.execute(sql);
+        System.out.println(sql);
+        Conexao con = new Conexao();
+        con.execute(sql);
+        sql = "INSERT INTO gerencialuguel (id_adm,id_alu,acao) VALUES("+id_adm+","+id_cl+",'Edição Cliente')";
+        con.execute(sql);
        }
       
        
       public void editVeiculo(int id_ve, String marca, String modelo, String cor, String placa, String cambio, String direcao, 
-            double potencia, boolean vidroseletricos, boolean arcondicionado, double valor, String anofabricacao,String dataaqusicao){
+            double potencia, boolean vidroseletricos, boolean arcondicionado, double valor, String anofabricacao,String dataaqusicao,
+            int id_adm){
          
        
-         String sql = "UPDATE veiculo SET"
+        String sql = "UPDATE veiculo SET"
                 + " marca_ve ='"+marca+"',modelo_ve= '"+modelo+
                 "',cor_ve = '"+cor+"', placa_ve = '"+placa+
                 "',cambio_ve= '"+cambio+"',direcao_ve = '"+direcao+
@@ -52,25 +55,29 @@ public class Edit {
                 ", valor_ve = "+valor+" ,dataaqusicao_cl = '"+dataaqusicao+"'"
                 + "WHERE id_ve = "+id_ve+";";
                 
-         System.out.println(sql);
-         Conexao con = new Conexao();
-         con.execute(sql);
+        System.out.println(sql);
+        Conexao con = new Conexao();
+        con.execute(sql);
+        sql = "INSERT INTO gerencialuguel (id_adm,id_alu,acao) VALUES("+id_adm+","+id_ve+",'Edição veiculo')";
+        con.execute(sql);
        }
       
       
       
       
          public void editAluguel(int id_alu, String dataInicio, String dataFim, double valor, 
-            double potencia, int id_cl,int id_ve){
+            double potencia, int id_cl,int id_ve, int id_adm){
          
        
-         String sql = "UPDATE veiculo SET"
+        String sql = "UPDATE veiculo SET"
                 + " dataInicio_alu ='"+dataInicio+"',dataFim_alu= '"+dataFim+
                 "', valor_alu = "+valor+", id_cl= "+id_cl+", id_ve= "+id_ve+
                 " + WHERE id_alu = "+id_alu+";";
         
-         System.out.println(sql);
-         Conexao con = new Conexao();
-         con.execute(sql);
+        System.out.println(sql);
+        Conexao con = new Conexao();
+        con.execute(sql);
+        sql = "INSERT INTO gerencialuguel (id_adm,id_alu,acao) VALUES("+id_adm+","+id_alu+",'Edição Aluguel')";
+        con.execute(sql);
        }
 }
