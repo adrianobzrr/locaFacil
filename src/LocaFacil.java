@@ -11,6 +11,7 @@ import locafacil.BD.Insert;
 import locafacil.BD.Delete;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import locafacil.BD.CreateTable;
 
 
@@ -18,28 +19,66 @@ public class LocaFacil {
 
     public static void main(String[] args) throws ParseException, SQLException {
         Conexao con = new Conexao();
-        CreateTable criaTabelas = new CreateTable();
-        criaTabelas.criaTabalas();
-        Administrador adm = new Administrador("Paulo Cesar", "00000000000", "paulo@gmail.com", "16515dfadf");
         Insert ins = new Insert();
+        Busca busca = new Busca();
         Edit edt = new Edit();
         Delete del = new Delete();
-        Busca busca = new Busca();
-        Veiculos ve = new Veiculos("VolksWagen", "Polo", "Preto", "sgfy-958", 
+        
+        ArrayList<Cliente> listaCliente = new ArrayList();
+        ArrayList<Veiculos> listaVeiculo = new ArrayList();
+        ArrayList<Aluguel> listaAluguel = new ArrayList();
+        
+        //Criar tabelas
+        CreateTable criaTabelas = new CreateTable();
+        //criaTabelas.criaTabalas(); //Execute este método para criar as tabelas
+        
+        //Administrador: Criar, Buscar, Editar e deletar
+        //Administrador adm = new Administrador("João José  Jaime Junqueira", "12345678901", "jjoaoj@gmail.com", "12345678");
+        //Obs: quando se cria um ADM não precisa enviar ID, nos outros métodos o objeto ADM precisa do ID.
+        //ins.insertAdm(adm);
+        //adm = busca.buscaAdmEmail("jjjj@gmail.com");
+        //edt.editAdm(adm);
+        //del.deleteAdm(2);
+        
+        //Cliente: Criar, Buscar, Editar e deletar
+        Cliente cl = new Cliente("Claudio Rocha", "09876543210", "craudio@gmail.com", "11151618", "26/08/1995", "8466666666", 
+                "Num Tem", "Sumiu", 5, 59000000, "Cada dele");
+        //ins.insertCliente(cl, 3);
+        //listaCliente = busca.buscaCliente();
+        //listaCliente = busca.buscaClienteNome("Claudio Rocha");
+        /*for(int i=0; i<(listaCliente.size()); i=i+1 ){
+            System.out.println(listaCliente.get(i).toString());
+        }*/
+        //cl = busca.buscaClienteId(3);
+        //edt.editCliente(cl, 1);
+        //del.deleteCliente(3);
+        
+        //Veículos: Criar, Buscar, Editar e deletar
+        Veiculos ve = new Veiculos(3, "VolksWagen", "Polo", "Preto", "kfr-889", 
                 "manual", "hidráulica", 1.0, true, false,
                 45000.00, 2019, "12/8/2020");
-        Cliente cl = new Cliente("Paulo Nobre", "01779563485", "pnobre@gmail.com", "665654654", "09/01/1994", "94663401", "São Miguel", 
-              "Rua Eneas Bobo", 51, 59925000, "Maria Manuela");
-        Aluguel alu = new Aluguel( 1,"13/09/2020", "30/10/2020", 3000.00, 1, 2);
-        //ins.insertAdm(adm);
-        //ins.insertCliente(cl);
-        //ins.insertVeiculo(ve, 1);
-        //edt.editAdm("Jose Ricardo Silva","1233456789", "joser@gmail", "53tgs342ds", 1);
-        //del.deleteAdm(1);
-        //adm = busca.buscaAdmEmail("ricardinhodelas@gmail.com");
-        //cl = busca.buscaClienteNome("Alef Souza");
-        //System.out.println(cl.toString());
+        //ins.insertVeiculo(ve, 3);
+        //listaVeiculo = busca.buscaVeiculo();
+        //listaVeiculo = busca.buscaVeiculoModelo("Polo");
+        /*for(int i=0; i<(listaVeiculo.size()); i=i+1){
+            System.out.println(listaVeiculo.get(i).toString());
+        }*/
+        //ve = busca.buscaVeiculoId(1);
+        //edt.editVeiculo(ve, 3);
+        //del.deleteVeiculo(2);
         
+        
+        //Veículos: Criar, Buscar, Editar e deletar
+        Aluguel alu = new Aluguel(8, "09/12/2020", "09/01/2021", 2500.00, 4, 3);
+        //ins.insertAluguel(alu, 1);
+        //listaAluguel = busca.buscaAluguel();
+        //alu = busca.buscaAluguelId(8);
+        //listaAluguel = busca.buscaAluguelIdCliente(1);
+        /*for(int i=0; i<(listaAluguel.size()); i=i+1){
+            System.out.println(listaAluguel.get(i).toString());
+        }*/
+        //edt.editAluguel(alu, 1);
+        //del.deleteAluguel(4);
         
     }
     

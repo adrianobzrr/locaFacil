@@ -80,12 +80,8 @@ public class Aluguel {
         this.id_ve = id_ve;
     }
 
-    @Override
     public String toString() {
-        return super.toString();
+        return "ID: "+id_alu+", Data de Inicio; "+dataInicio+", Data de Término: "+dataFim+
+                ", Valor: "+valor+", ID do cliente: "+id_cl+", ID do Veículo: "+id_ve;
     }
-       
-    
-       
-    
 }

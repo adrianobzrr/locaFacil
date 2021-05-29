@@ -36,27 +36,21 @@ public class CreateTable {
         sql = "create table gerenciacliente(\n" +
                     "id_adm int,\n" +
                     "id_cl int,\n" +
-                    "acao character varying,\n" +
-                    "foreign key (id_cl) references cliente,\n" +
-                    "foreign key (id_adm) references administrador)";
+                    "acao character varying)";
         
         con.execute(sql);
         
         sql = "create table gerenciaveiculo(\n" +
                     "id_adm int,\n" +
                     "id_ve  int,\n" +
-                    "acao character varying,\n" +
-                    "foreign key (id_adm) references administrador,\n" +
-                    "foreign key (id_ve) references veiculo)";
+                    "acao character varying)";
         
         con.execute(sql);
         
         sql = "create table gerencialuguel(\n" +
                     "id_adm int,\n" +
                     "id_alu  int,\n" +
-                    "acao character varying,\n" +
-                    "foreign key (id_adm) references administrador,\n" +
-                    "foreign key (id_alu) references aluguel)";
+                    "acao character varying)";
         
         con.execute(sql);
     }

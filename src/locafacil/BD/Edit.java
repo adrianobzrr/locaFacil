@@ -1,6 +1,10 @@
 
 package locafacil.BD;
 
+import Models.Administrador;
+import Models.Aluguel;
+import Models.Cliente;
+import Models.Veiculos;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -10,11 +14,11 @@ import java.util.Date;
  * @author Yasmim
  */
 public class Edit {
-       public void editAdm(String nome, String cpf, String email, String senha, int id){
+       public void editAdm(Administrador adm){
          
          String sql = "UPDATE administrador SET"
-                 + " nome_adm ='"+nome+"',cpf_adm = '"+cpf+
-                "',email_adm = '"+email+"',senha_adm = '"+senha+"'WHERE id_adm = "+id+";";
+                 + " nome_adm ='"+adm.getNome()+"',cpf_adm = '"+adm.getCpf()+
+                "',email_adm = '"+adm.getEmail()+"',senha_adm = '"+adm.getSenha()+"'WHERE id_adm = "+adm.getId_admin()+";";
           
          System.out.println(sql);
          Conexao con = new Conexao();
@@ -22,62 +26,53 @@ public class Edit {
        }
        
        
-       public void editCliente(int id_cl, String nome, String cpf, String email, String cnh, String dataNascimento, String telefone, 
-            String endCidade, String endRua, int endNumero, int endCEP, String endBairro, int id_adm){
+       public void editCliente(Cliente cl, int id_adm){
          
          String sql = "UPDATE cliente SET"
-                + " nome_cl ='"+nome+"',cpf_cl = '"+cpf+
-                "',email_cl = '"+email+"', numerocnh_cl = '"+cnh+
-                "',nascimento_cl = '"+dataNascimento+"',telefone_cl = '"+telefone+
-                "',endcidade_cl = '"+endCidade+"', endrua_cl = '"+endRua+
-                "',endnumero_cl = "+endNumero+",endcep_cl = "+endCEP+
-                ", endbairro_cl = '"+endBairro+"'WHERE id_cl = "+id_cl+";";
+                + " nome_cl ='"+cl.getNome()+"',cpf_cl = '"+cl.getCpf()+
+                "',email_cl = '"+cl.getEmail()+"', numerocnh_cl = '"+cl.getCnh()+
+                "',nascimento_cl = '"+cl.getDataNascimento()+"',telefone_cl = '"+cl.getTelefone()+
+                "',endcidade_cl = '"+cl.getEndCidade()+"', endrua_cl = '"+cl.getEndRua()+
+                "',endnumero_cl = "+cl.getEndNumero()+",endcep_cl = "+cl.getEndCEP()+
+                ", endbairro_cl = '"+cl.getEndBairro()+"'WHERE id_cl = "+cl.getId_cl()+";";
         
-        System.out.println(sql);
         Conexao con = new Conexao();
         con.execute(sql);
-        sql = "INSERT INTO gerencialuguel (id_adm,id_alu,acao) VALUES("+id_adm+","+id_cl+",'Edição Cliente')";
+        sql = "INSERT INTO gerenciacliente (id_adm,id_cl,acao) VALUES("+id_adm+","+cl.getId_cl()+",'Edição de Cliente')";
         con.execute(sql);
        }
       
        
-      public void editVeiculo(int id_ve, String marca, String modelo, String cor, String placa, String cambio, String direcao, 
-            double potencia, boolean vidroseletricos, boolean arcondicionado, double valor, String anofabricacao,String dataaqusicao,
-            int id_adm){
+      public void editVeiculo(Veiculos ve, int id_adm){
          
        
-        String sql = "UPDATE veiculo SET"
-                + " marca_ve ='"+marca+"',modelo_ve= '"+modelo+
-                "',cor_ve = '"+cor+"', placa_ve = '"+placa+
-                "',cambio_ve= '"+cambio+"',direcao_ve = '"+direcao+
-                "',potencia_ve= '"+potencia+"', vidroseletricos = "+vidroseletricos+
-                ",arcondicionado_ve = "+arcondicionado+",anofabricacao,_ve = "+anofabricacao+
-                ", valor_ve = "+valor+" ,dataaqusicao_cl = '"+dataaqusicao+"'"
-                + "WHERE id_ve = "+id_ve+";";
-                
-        System.out.println(sql);
+        String sql = "UPDATE veiculo SET marca_ve ='"+ve.getMarca()+"',modelo_ve= '"+ve.getModelo()+
+                "',cor_ve = '"+ve.getCor()+"', placa_ve = '"+ve.getPlaca()+
+                "',cambio_ve= '"+ve.getCambio()+"',direcao_ve = '"+ve.getDirecao()+
+                "',potencia_ve= "+ve.getPotencia()+", vidroseletricos_ve = "+ve.getVidroseletricos()+
+                ",arcondicionado_ve = "+ve.getArcondicionado()+",anofabricacao_ve = '"+ve.getAnofabricacao()+
+                "', valor_ve = "+ve.getValor()+" ,dataaquisicao_ve = '"+ve.getDataaqusicao()+"'"
+                + "WHERE id_ve = "+ve.getId_ve()+";";
         Conexao con = new Conexao();
         con.execute(sql);
-        sql = "INSERT INTO gerencialuguel (id_adm,id_alu,acao) VALUES("+id_adm+","+id_ve+",'Edição veiculo')";
+        sql = "INSERT INTO gerenciaveiculo (id_adm,id_ve,acao) VALUES("+id_adm+","+ve.getId_ve()+",'Edição de veiculo')";
         con.execute(sql);
        }
       
       
       
       
-         public void editAluguel(int id_alu, String dataInicio, String dataFim, double valor, 
-            double potencia, int id_cl,int id_ve, int id_adm){
+         public void editAluguel(Aluguel alu, int id_adm){
          
        
-        String sql = "UPDATE veiculo SET"
-                + " dataInicio_alu ='"+dataInicio+"',dataFim_alu= '"+dataFim+
-                "', valor_alu = "+valor+", id_cl= "+id_cl+", id_ve= "+id_ve+
-                " + WHERE id_alu = "+id_alu+";";
+        String sql = "UPDATE aluguel SET"
+                + " dataInicio_alu ='"+alu.getDataInicio()+"',dataFim_alu= '"+alu.getDataFim()+
+                "', valor_alu = "+alu.getValor()+", id_cl= "+alu.getId_cl()+", id_ve= "+alu.getId_ve()+
+                " WHERE id_alu = "+alu.getId_alu()+";";
         
-        System.out.println(sql);
         Conexao con = new Conexao();
         con.execute(sql);
-        sql = "INSERT INTO gerencialuguel (id_adm,id_alu,acao) VALUES("+id_adm+","+id_alu+",'Edição Aluguel')";
+        sql = "INSERT INTO gerencialuguel (id_adm,id_alu,acao) VALUES("+id_adm+","+alu.getId_alu()+",'Edição de Aluguel')";
         con.execute(sql);
        }
 }

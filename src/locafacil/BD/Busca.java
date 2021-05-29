@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Busca {
     
-    public Administrador buscaAdmEmailEmail(String email){
+    public Administrador buscaAdmEmail(String email){
         Administrador adm = null;
         try {
             String sql = "Select * from administrador where email_adm like '"+email+"';";
@@ -36,7 +36,7 @@ public class Busca {
     public ArrayList buscaClienteNome(String nome){
         ArrayList<Cliente> list = new ArrayList();
         try {
-            String sql = "Select * from cliente where nome_cl like '"+nome+"';";
+            String sql = "Select * from cliente where nome_cl like '"+nome+"%';";
             Conexao con = new Conexao();
             ResultSet rs = con.executaBusca(sql);
             
@@ -60,10 +60,10 @@ public class Busca {
     }
     
     
-    public Cliente buscaClienteId(String id_cl){
+    public Cliente buscaClienteId(int id_cl){
         Cliente cl = null;
         try {
-            String sql = "Select * from cliente where id_cl like '"+id_cl+"';";
+            String sql = "Select * from cliente where id_cl = '"+id_cl+"';";
             Conexao con = new Conexao();
             ResultSet rs = con.executaBusca(sql);
             
@@ -97,7 +97,7 @@ public class Busca {
                     Veiculos ve01 = new Veiculos(rs.getInt("id_ve"), rs.getString("marca_ve"), rs.getString("modelo_ve"),
                             rs.getString("cor_ve"), rs.getString("placa_ve"), rs.getString("cambio_ve"), rs.getString("direcao_ve"),
                             rs.getDouble("potencia_ve"), rs.getBoolean("vidroseletricos_ve"), rs.getBoolean("arcondicionado_ve"),
-                            rs.getDouble("valor_ve"), rs.getInt("anofabricacao_ve"), rs.getString("dataaqusicao_ve"));
+                            rs.getDouble("valor_ve"), rs.getInt("anofabricacao_ve"), rs.getString("dataaquisicao_ve"));
                     ve = ve01;
                 }
             }catch (Exception e){
@@ -113,7 +113,7 @@ public class Busca {
       public ArrayList buscaVeiculoModelo(String modelo_ve){ 
    
         try {
-            String sql = "Select * from veiculo where modelo_ve= "+modelo_ve+";";
+            String sql = "Select * from veiculo where modelo_ve like '"+modelo_ve+"%';";
             Conexao con = new Conexao();
             ResultSet rs = con.executaBusca(sql);
             ArrayList<Veiculos> list = new ArrayList();
@@ -122,7 +122,7 @@ public class Busca {
                     Veiculos ve = new Veiculos(rs.getInt("id_ve"), rs.getString("marca_ve"), rs.getString("modelo_ve"),
                             rs.getString("cor_ve"), rs.getString("placa_ve"), rs.getString("cambio_ve"), rs.getString("direcao_ve"),
                             rs.getDouble("potencia_ve"), rs.getBoolean("vidroseletricos_ve"), rs.getBoolean("arcondicionado_ve"),
-                            rs.getDouble("valor_ve"), rs.getInt("anofabricacao_ve"), rs.getString("dataaqusicao_ve"));
+                            rs.getDouble("valor_ve"), rs.getInt("anofabricacao_ve"), rs.getString("dataaquisicao_ve"));
                     list.add(ve);
                 }
             }catch (Exception e){
@@ -188,4 +188,63 @@ public class Busca {
         }
      }
     
+      
+    public ArrayList buscaVeiculo(){ 
+        try {
+            String sql = "Select * from veiculo";
+            Conexao con = new Conexao();
+            ResultSet rs = con.executaBusca(sql);
+            ArrayList<Veiculos> list = new ArrayList();
+            while(rs.next()){
+                Veiculos ve = new Veiculos(rs.getInt("id_ve"), rs.getString("marca_ve"), rs.getString("modelo_ve"),
+                        rs.getString("cor_ve"), rs.getString("placa_ve"), rs.getString("cambio_ve"), rs.getString("direcao_ve"),
+                        rs.getDouble("potencia_ve"), rs.getBoolean("vidroseletricos_ve"), rs.getBoolean("arcondicionado_ve"),
+                        rs.getDouble("valor_ve"), rs.getInt("anofabricacao_ve"), rs.getString("dataaquisicao_ve"));
+                list.add(ve);
+            }
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+     }
+    
+    
+    public ArrayList buscaCliente(){ 
+        try {
+            String sql = "Select * from cliente";
+            Conexao con = new Conexao();
+            ResultSet rs = con.executaBusca(sql);
+            ArrayList<Cliente> list = new ArrayList();
+            while(rs.next()){
+                Cliente cl = new Cliente(rs.getInt("id_cl"), rs.getString("nome_cl"), rs.getString("cpf_cl"),
+                        rs.getString("email_cl"), rs.getString("numerocnh_cl"), rs.getString("nascimento_cl"),
+                        rs.getString("telefone_cl"), rs.getString("endcidade_cl"), rs.getString("endrua_cl"),
+                        rs.getInt("endnumero_cl"), rs.getInt("endcep_cl"), rs.getString("endbairro_cl"));
+                list.add(cl);
+            }
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+     }
+    
+    public ArrayList buscaAluguel(){ 
+        try {
+            String sql = "Select * from aluguel";
+            Conexao con = new Conexao();
+            ResultSet rs = con.executaBusca(sql);
+            ArrayList<Aluguel> list = new ArrayList();
+            while(rs.next()){
+                Aluguel alu = new Aluguel(rs.getInt("id_alu"), rs.getString("dataInicio_alu"),
+                    rs.getString("dataFim_alu"), rs.getDouble("valor_alu"), rs.getInt("id_cl"), rs.getInt("id_ve"));
+                list.add(alu);
+            }
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+     }
 }

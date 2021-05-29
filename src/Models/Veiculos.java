@@ -156,7 +156,11 @@ public class Veiculos {
         this.dataaqusicao = dataaqusicao;
     }
     
-     
-	
-    
+    public String toString(){
+        return "ID: "+id_ve+ ", Marca: "+marca+", Modelo: "+modelo+", Cor: "+cor+
+                ", Placa: "+placa+", Cambio: "+cambio+", Direção: "+direcao+", "
+                + "Potência; "+potencia+", Vidros Elétricos: "+vidroseletricos+", "
+                + "Ar Condicionado: "+arcondicionado+", Valor: "+valor+", "
+                + "Ano de Fabricação: "+anofabricacao+", Data de Aquisição: "+dataaqusicao;
+    }
 }

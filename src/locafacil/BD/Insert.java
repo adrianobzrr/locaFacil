@@ -46,7 +46,7 @@ public class Insert {
             }catch (Exception e){
                 e.printStackTrace();
             }
-        sql = "INSERT INTO gerenciacliente (id_adm,id_cl,acao) VALUES("+id_adm+","+id_cl+",'inserção')";
+        sql = "INSERT INTO gerenciacliente (id_adm,id_cl,acao) VALUES("+id_adm+","+id_cl+",'Inserção de Cliente')";
         con.execute(sql);
     }
     
@@ -79,7 +79,7 @@ public class Insert {
             }catch (Exception e){
                 e.printStackTrace();
             }
-        sql = "INSERT INTO gerenciaveiculo (id_adm,id_ve,acao) VALUES("+id_adm+","+id_ve+",'inserção')";
+        sql = "INSERT INTO gerenciaveiculo (id_adm,id_ve,acao) VALUES("+id_adm+","+id_ve+",'Inserção de Veículo')";
         con.execute(sql);
     }
     
@@ -92,7 +92,7 @@ public class Insert {
                 + alu.getDataInicio()+"','"+alu.getDataFim()+"',"+alu.getValor()+","+alu.getId_cl()+","+alu.getId_ve()+");";
         Conexao con = new Conexao();
         con.execute(sql);
-        ResultSet rs = con.executaBusca("Select * from veiculo");
+        ResultSet rs = con.executaBusca("Select * from aluguel");
         try {
                 while(rs.next()){
                     id_alu = rs.getInt("id_alu");
@@ -100,7 +100,7 @@ public class Insert {
             }catch (Exception e){
                 e.printStackTrace();
             }
-        sql = "INSERT INTO gerencialuguel (id_adm,id_alu,acao) VALUES("+id_adm+","+id_alu+",'inserção')";
+        sql = "INSERT INTO gerencialuguel (id_adm,id_alu,acao) VALUES("+id_adm+","+id_alu+",'Inserção de Aluguel')";
         con.execute(sql);
     }
     
